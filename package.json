@@ -2,11 +2,11 @@
   "name": "reason-splash",
   "version": "0.1.0",
   "scripts": {
-    "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world",
-    "webpack": "webpack -w",
-    "webpack:production": "NODE_ENV=production webpack",
+    "bsb:build": "bsb -make-world",
+    "bsb:start": "bsb -make-world -w",
+    "bsb:clean": "bsb -clean-world",
+    "watch": "webpack -w",
+    "production": "NODE_ENV=production webpack",
     "server": "webpack-dev-server"
   },
   "keywords": [
@@ -17,6 +17,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "bs-axios": "^0.0.43",
+    "bs-fetch": "^0.6.2",
+    "bs-promise-monad": "^0.4.4",
     "html-webpack-plugin": "^4.3.0",
     "node-sass": "^4.14.1",
     "postcss-flexbugs-fixes": "^4.2.1",

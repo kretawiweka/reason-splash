@@ -1,17 +1,17 @@
 'use strict';
 
 var React = require("react");
+var Home$ReasonSplash = require("../Home/Home.bs.js");
 var ReasonReactRouter = require("reason-react/src/ReasonReactRouter.js");
-var Home$ReasonReactExamples = require("../Home/Home.bs.js");
-var NotFound$ReasonReactExamples = require("../NotFound/NotFound.bs.js");
+var NotFound$ReasonSplash = require("../NotFound/NotFound.bs.js");
 
 function Routes(Props) {
   var url = ReasonReactRouter.useUrl(undefined, undefined);
   var match = url.path;
   if (match) {
-    return React.createElement(NotFound$ReasonReactExamples.make, { });
+    return React.createElement(NotFound$ReasonSplash.make, { });
   } else {
-    return React.createElement(Home$ReasonReactExamples.make, { });
+    return React.createElement(Home$ReasonSplash.make, { });
   }
 }
 

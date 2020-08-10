@@ -1,10 +1,10 @@
 'use strict';
 
 var React = require("react");
-var Routes$ReasonReactExamples = require("./utils/Routes.bs.js");
+var Routes$ReasonSplash = require("./utils/Routes.bs.js");
 
 function App(Props) {
-  return React.createElement(Routes$ReasonReactExamples.make, { });
+  return React.createElement(Routes$ReasonSplash.make, { });
 }
 
 var make = App;

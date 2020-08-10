@@ -5,11 +5,21 @@ var React = require("react");
 
 require("./style.scss");
 
-function str(prim) {
-  return prim;
-}
-
 function Home(Props) {
+  React.useEffect((function () {
+          fetch("https://api.unsplash.com/photos?page=1&client_id=H4kGEQ0OXfgAsP11OvmgnwssyVwCWSIo60sh0Hk7ZV4").then((function (prim) {
+                      return prim.json();
+                    })).then((function (resJson) {
+                    return Promise.resolve((console.log(resJson), undefined));
+                  })).catch((function (err) {
+                  console.log(err);
+                  return Promise.resolve(undefined);
+                }));
+          return (function (param) {
+                    console.log("Get Photos");
+                    
+                  });
+        }));
   return React.createElement("div", {
               className: "h-screen flex justify-center items-center"
             }, React.createElement("div", {
@@ -26,13 +36,12 @@ function Home(Props) {
                                         className: "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mt-2"
                                       }, "#" + tag);
                           }), [
-                          "Reason React",
+                          "Reason",
                           "Tailwind"
                         ]))));
 }
 
 var make = Home;
 
-exports.str = str;
 exports.make = make;
 /*  Not a pure module */

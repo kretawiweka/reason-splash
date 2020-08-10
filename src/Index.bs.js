@@ -2,10 +2,10 @@
 
 var React = require("react");
 var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
-var App$ReasonReactExamples = require("./App.bs.js");
+var App$ReasonSplash = require("./App.bs.js");
 
 ((require("./styles/tailwind.css")));
 
-ReactDOMRe.renderToElementWithId(React.createElement(App$ReasonReactExamples.make, { }), "root");
+ReactDOMRe.renderToElementWithId(React.createElement(App$ReasonSplash.make, { }), "root");
 
 /*  Not a pure module */
