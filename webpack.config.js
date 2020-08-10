@@ -1,56 +1,55 @@
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const outputDir = path.join(__dirname, 'build/')
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const outputDir = path.join(__dirname, "build/");
 
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  entry: './src/Index.bs.js',
-  mode: isProd ? 'pruduction' : 'development',
+  entry: "./src/Index.bs.js",
+  mode: isProd ? "production" : "development",
   output: {
     path: outputDir,
-    filename: 'Index.js'
-  },
-  module: {
-    rules: [{
-      test: /\.(png|jpe?g|gif)$/i,
-      loader: 'file-loader',
-      options: {
-        esModule: false,
-      },
-    },
-    {
-      test: /\.s[ac]ss$/i,
-      use: [
-        {
-          loader: 'style-loader'
-        },
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true
-          }
-        }
-      ]
-    }]
+    filename: "Index.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
-      inject: false
-    })
+      template: "index.html",
+      inject: false,
+    }),
   ],
   devServer: {
     compress: true,
     contentBase: outputDir,
     port: process.env.PORT || 8000,
-    historyApiFallback: true
-  }
-}
-
+    historyApiFallback: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
