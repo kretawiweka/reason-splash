@@ -4,24 +4,40 @@ open FetchData;
 
 [@react.component]
 let make = () => {
-  React.useEffect(() => {
-    let fetchPhoto = return(fetchData("/photos?page=1"));
-    fetchPhoto
-    >>= (
-      value => {
-        Js.log(value);
-        return(value);
-      }
-    );
+  let (data, setData) = React.useState(_ => Js.Json.null);
+
+  React.useEffect0(() => {
+    let _ =
+      fetchData("/photos?page=1")
+      >>= (
+        value => {
+          setData(_ => value);
+          return();
+        }
+      );
     None;
   });
+
+  React.useEffect1(
+    () => {
+      Js.log(data);
+      None;
+    },
+    [|data|],
+  );
 
   <div className="h-screen flex justify-center items-center">
     <div className="max-w-sm rounded overflow-hidden shadow-lg p-4">
       <div className="px-6 py-4">
-        <p className="text-gray-700 text-base">
-          {"A reason react starter with tailwind" |> React.string}
-        </p>
+        {data !== Js.Json.null
+           ? [|"Reason", "Tailwind"|]
+             |> Array.map(tag =>
+                  <p key=tag className="text-gray-700 text-base">
+                    {"A reason react starter with tailwind" |> React.string}
+                  </p>
+                )
+             |> React.array
+           : React.null}
       </div>
       <div className="px-6 py-4">
         {[|"Reason", "Tailwind"|]
