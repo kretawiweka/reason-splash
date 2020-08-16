@@ -20,7 +20,9 @@ let make = () => {
 
   React.useEffect1(
     () => {
-      Js.log(data);
+      if (data !== Js.Json.null) {
+        Js.log(data);
+      };
       None;
     },
     [|data|],

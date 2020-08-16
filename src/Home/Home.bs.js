@@ -22,7 +22,9 @@ function Home(Props) {
           
         }), ([]));
   React.useEffect((function () {
-          console.log(data);
+          if (data !== null) {
+            console.log(data);
+          }
           
         }), [data]);
   return React.createElement("div", {
