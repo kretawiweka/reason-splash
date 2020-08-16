@@ -17,9 +17,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bs-axios": "^0.0.43",
     "bs-fetch": "^0.6.2",
     "bs-promise-monad": "^0.4.4",
+    "dotenv-webpack": "^2.0.0",
     "html-webpack-plugin": "^4.3.0",
     "node-sass": "^4.14.1",
     "postcss-flexbugs-fixes": "^4.2.1",

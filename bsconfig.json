@@ -18,7 +18,6 @@
   "namespace": true,
   "bs-dependencies": [
     "reason-react",
-    "bs-axios",
     "bs-fetch",
     "bs-promise-monad"
   ],

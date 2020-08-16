@@ -2,23 +2,17 @@
 
 var $$Array = require("bs-platform/lib/js/array.js");
 var React = require("react");
-
-require("./style.scss");
+var PromiseMonad = require("bs-promise-monad/src/PromiseMonad.bs.js");
+var FetchData$ReasonSplash = require("../utils/FetchData.bs.js");
 
 function Home(Props) {
   React.useEffect((function () {
-          fetch("https://api.unsplash.com/photos?page=1&client_id=H4kGEQ0OXfgAsP11OvmgnwssyVwCWSIo60sh0Hk7ZV4").then((function (prim) {
-                      return prim.json();
-                    })).then((function (resJson) {
-                    return Promise.resolve((console.log(resJson), undefined));
-                  })).catch((function (err) {
-                  console.log(err);
-                  return Promise.resolve(undefined);
+          var fetchPhoto = PromiseMonad.$$return(FetchData$ReasonSplash.fetchData(undefined, undefined, "/photos?page=1"));
+          PromiseMonad.$great$great$eq(fetchPhoto, (function (value) {
+                  console.log(value);
+                  return PromiseMonad.$$return(value);
                 }));
-          return (function (param) {
-                    console.log("Get Photos");
-                    
-                  });
+          
         }));
   return React.createElement("div", {
               className: "h-screen flex justify-center items-center"
@@ -44,4 +38,4 @@ function Home(Props) {
 var make = Home;
 
 exports.make = make;
-/*  Not a pure module */
+/* react Not a pure module */

@@ -1,25 +1,19 @@
-open Helpers;
 open PromiseMonad;
-open Fetch;
-
-requireStyle("./style.scss");
+open FetchData;
+[@bs.val] external baseApi: string = "process.env.BASE_API";
 
 [@react.component]
 let make = () => {
   React.useEffect(() => {
-    let _ =
-      Js.Promise.(
-        Fetch.fetch(
-          "https://api.unsplash.com/photos?page=1&client_id=H4kGEQ0OXfgAsP11OvmgnwssyVwCWSIo60sh0Hk7ZV4",
-        )
-        |> then_(Fetch.Response.json)
-        |> then_(resJson => Js.log(resJson) |> resolve)
-        |> catch(err => {
-             Js.log(err);
-             Js.Promise.resolve();
-           })
-      );
-    Some(_ => Js.log("Get Photos"));
+    let fetchPhoto = return(fetchData("/photos?page=1"));
+    fetchPhoto
+    >>= (
+      value => {
+        Js.log(value);
+        return(value);
+      }
+    );
+    None;
   });
 
   <div className="h-screen flex justify-center items-center">
